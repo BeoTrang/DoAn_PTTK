@@ -6,7 +6,7 @@ using System.Reflection;
 
 namespace dll_captcha
 {
-    public class tao_capcha
+    public class tao_captcha
     {
         private static Random random = new Random();
         private static string[] fonts = { "Arial", "Verdana", "Times New Roman", "Comic Sans MS", "Tahoma" };
@@ -45,7 +45,7 @@ namespace dll_captcha
         private static Bitmap LoadRandomBackground()
         {
             int backgroundIndex = random.Next(1, 10);
-            string resourceName = $"DLL_CAPCHA.Resources.background{backgroundIndex}.jpg";
+            string resourceName = $"dll_captcah.Resources.background{backgroundIndex}.jpg";
             using (Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName))
             {
                 return new Bitmap(stream);

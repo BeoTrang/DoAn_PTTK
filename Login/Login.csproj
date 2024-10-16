@@ -32,6 +32,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="dll_captcah">
+      <HintPath>..\dll_captcah\bin\Debug\dll_captcah.dll</HintPath>
+    </Reference>
+    <Reference Include="dll_connectSQL">
+      <HintPath>..\dll_connectSQL\bin\Debug\dll_connectSQL.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
@@ -40,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Form_Captcha.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Captcha.Designer.cs">
+      <DependentUpon>Form_Captcha.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -54,6 +66,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form_Captcha.resx">
+      <DependentUpon>Form_Captcha.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
