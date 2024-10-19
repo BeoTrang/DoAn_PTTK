@@ -25,22 +25,26 @@ namespace Login
 
         private void BT_Login_Click(object sender, EventArgs e)
         {
-            if (TB_pwd.Text == "" || TB_uid.Text == "")
-            {
-                MessageBox.Show("Điền đầy đủ thông tin.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            string uid = TB_uid.Text;
-            string pwd = TB_pwd.Text;
-            Form_Captcha captcha = new Form_Captcha();
-            captcha.FormClosing += new FormClosingEventHandler(Captcha_FormClosing);
-            captcha.ShowDialog();
-            if (stop == true)
-            {
-                MessageBox.Show("Bạn không điền Captcha nên không thể đăng nhập!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            MessageBox.Show("OKE");//TEST THÔI
+            //if (TB_pwd.Text == "" || TB_uid.Text == "")
+            //{
+            //    MessageBox.Show("Điền đầy đủ thông tin.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //    return;
+            //}
+            //string uid = TB_uid.Text;
+            //string pwd = TB_pwd.Text;
+            //Form_Captcha captcha = new Form_Captcha();
+            //captcha.FormClosing += new FormClosingEventHandler(Captcha_FormClosing);
+            //captcha.ShowDialog();
+            //if (stop == true)
+            //{
+            //    MessageBox.Show("Bạn không điền Captcha nên không thể đăng nhập!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //    return;
+            //}
+            MessageBox.Show("Đăng nhập thành công");//TEST THÔI
+            mainSV mainSV = new mainSV();
+            this.Hide();
+            mainSV.Show();
+            
         }
         private void Captcha_FormClosing(object sender, FormClosingEventArgs e)
         {
