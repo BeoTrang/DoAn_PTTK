@@ -6,8 +6,6 @@ Họ và tên sinh viên 1: Phạm Quang Trường
 
 Họ và tên sinh viên 2: La Đức Thắng
 
-Ngành học	:	Kỹ thuật Máy tính
-
 MSSV 1: K215480106129
 
 MSSV 2:	K215480106120
