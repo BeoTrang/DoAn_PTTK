@@ -43,7 +43,8 @@ namespace Login
             MessageBox.Show("Đăng nhập thành công");//TEST THÔI
             mainSV mainSV = new mainSV();
             this.Hide();
-            mainSV.Show();
+            mainSV.ShowDialog();
+            this.Show();
             
         }
         private void Captcha_FormClosing(object sender, FormClosingEventArgs e)

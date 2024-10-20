@@ -49,6 +49,7 @@
             this.ChucNang_1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
+            this.LB_ChangePWD = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -59,7 +60,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.label1.Location = new System.Drawing.Point(3, 34);
+            this.label1.Location = new System.Drawing.Point(2, 21);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(103, 23);
             this.label1.TabIndex = 0;
@@ -70,7 +71,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.label2.Location = new System.Drawing.Point(3, 72);
+            this.label2.Location = new System.Drawing.Point(3, 54);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(96, 23);
             this.label2.TabIndex = 1;
@@ -81,7 +82,7 @@
             this.LB_MSV.AutoSize = true;
             this.LB_MSV.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LB_MSV.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.LB_MSV.Location = new System.Drawing.Point(112, 34);
+            this.LB_MSV.Location = new System.Drawing.Point(112, 21);
             this.LB_MSV.Name = "LB_MSV";
             this.LB_MSV.Size = new System.Drawing.Size(166, 23);
             this.LB_MSV.TabIndex = 2;
@@ -92,7 +93,7 @@
             this.LB_HVT.AutoSize = true;
             this.LB_HVT.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LB_HVT.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.LB_HVT.Location = new System.Drawing.Point(112, 72);
+            this.LB_HVT.Location = new System.Drawing.Point(112, 54);
             this.LB_HVT.Name = "LB_HVT";
             this.LB_HVT.Size = new System.Drawing.Size(140, 23);
             this.LB_HVT.TabIndex = 3;
@@ -104,17 +105,19 @@
             this.BT_Logout.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.BT_Logout.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BT_Logout.ForeColor = System.Drawing.Color.White;
-            this.BT_Logout.Location = new System.Drawing.Point(7, 111);
+            this.BT_Logout.Location = new System.Drawing.Point(6, 92);
             this.BT_Logout.Name = "BT_Logout";
             this.BT_Logout.Size = new System.Drawing.Size(325, 32);
             this.BT_Logout.TabIndex = 4;
             this.BT_Logout.Text = "Đăng xuất";
             this.BT_Logout.UseVisualStyleBackColor = false;
+            this.BT_Logout.Click += new System.EventHandler(this.BT_Logout_Click);
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.LB_ChangePWD);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.BT_Logout);
@@ -302,6 +305,19 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "TÍNH NĂNG";
             // 
+            // LB_ChangePWD
+            // 
+            this.LB_ChangePWD.AutoSize = true;
+            this.LB_ChangePWD.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LB_ChangePWD.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.LB_ChangePWD.Location = new System.Drawing.Point(216, 127);
+            this.LB_ChangePWD.Name = "LB_ChangePWD";
+            this.LB_ChangePWD.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
+            this.LB_ChangePWD.Size = new System.Drawing.Size(115, 26);
+            this.LB_ChangePWD.TabIndex = 9;
+            this.LB_ChangePWD.Text = "Đổi mật khẩu";
+            this.LB_ChangePWD.Click += new System.EventHandler(this.LB_ChangePWD_Click);
+            // 
             // mainSV
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
@@ -313,7 +329,7 @@
             this.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "mainSV";
-            this.Text = "MainSV";
+            this.Text = "Trang chủ";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -347,5 +363,6 @@
         private System.Windows.Forms.Label ChucNang_RL;
         private System.Windows.Forms.Label ChucNang_3;
         private System.Windows.Forms.Label ChucNang_2;
+        private System.Windows.Forms.Label LB_ChangePWD;
     }
 }
