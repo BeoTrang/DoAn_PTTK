@@ -34,6 +34,7 @@
             this.LB_HVT = new System.Windows.Forms.Label();
             this.BT_Logout = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.LB_ChangePWD = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.ChucNang_12 = new System.Windows.Forms.Label();
             this.ChucNang_11 = new System.Windows.Forms.Label();
@@ -49,7 +50,6 @@
             this.ChucNang_1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
-            this.LB_ChangePWD = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -62,7 +62,7 @@
             this.label1.ForeColor = System.Drawing.Color.DodgerBlue;
             this.label1.Location = new System.Drawing.Point(2, 21);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(103, 23);
+            this.label1.Size = new System.Drawing.Size(136, 31);
             this.label1.TabIndex = 0;
             this.label1.Text = "Tài khoản: ";
             // 
@@ -73,7 +73,7 @@
             this.label2.ForeColor = System.Drawing.Color.DodgerBlue;
             this.label2.Location = new System.Drawing.Point(3, 54);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(96, 23);
+            this.label2.Size = new System.Drawing.Size(125, 31);
             this.label2.TabIndex = 1;
             this.label2.Text = "Họ và tên:";
             // 
@@ -84,9 +84,10 @@
             this.LB_MSV.ForeColor = System.Drawing.Color.DodgerBlue;
             this.LB_MSV.Location = new System.Drawing.Point(112, 21);
             this.LB_MSV.Name = "LB_MSV";
-            this.LB_MSV.Size = new System.Drawing.Size(166, 23);
+            this.LB_MSV.Size = new System.Drawing.Size(221, 31);
             this.LB_MSV.TabIndex = 2;
             this.LB_MSV.Text = "Mã sinh viên ở đây";
+            this.LB_MSV.Click += new System.EventHandler(this.LB_MSV_Click);
             // 
             // LB_HVT
             // 
@@ -95,9 +96,10 @@
             this.LB_HVT.ForeColor = System.Drawing.Color.DodgerBlue;
             this.LB_HVT.Location = new System.Drawing.Point(112, 54);
             this.LB_HVT.Name = "LB_HVT";
-            this.LB_HVT.Size = new System.Drawing.Size(140, 23);
+            this.LB_HVT.Size = new System.Drawing.Size(186, 31);
             this.LB_HVT.TabIndex = 3;
             this.LB_HVT.Text = "Họ và tên ở đây";
+            this.LB_HVT.Click += new System.EventHandler(this.LB_HVT_Click);
             // 
             // BT_Logout
             // 
@@ -128,6 +130,19 @@
             this.panel1.Size = new System.Drawing.Size(343, 166);
             this.panel1.TabIndex = 6;
             // 
+            // LB_ChangePWD
+            // 
+            this.LB_ChangePWD.AutoSize = true;
+            this.LB_ChangePWD.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LB_ChangePWD.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.LB_ChangePWD.Location = new System.Drawing.Point(216, 127);
+            this.LB_ChangePWD.Name = "LB_ChangePWD";
+            this.LB_ChangePWD.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
+            this.LB_ChangePWD.Size = new System.Drawing.Size(143, 32);
+            this.LB_ChangePWD.TabIndex = 9;
+            this.LB_ChangePWD.Text = "Đổi mật khẩu";
+            this.LB_ChangePWD.Click += new System.EventHandler(this.LB_ChangePWD_Click);
+            // 
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -155,7 +170,7 @@
             this.ChucNang_12.Location = new System.Drawing.Point(3, 343);
             this.ChucNang_12.Name = "ChucNang_12";
             this.ChucNang_12.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.ChucNang_12.Size = new System.Drawing.Size(159, 31);
+            this.ChucNang_12.Size = new System.Drawing.Size(204, 37);
             this.ChucNang_12.TabIndex = 11;
             this.ChucNang_12.Text = "> Khảo sát đánh giá";
             // 
@@ -166,7 +181,7 @@
             this.ChucNang_11.Location = new System.Drawing.Point(3, 312);
             this.ChucNang_11.Name = "ChucNang_11";
             this.ChucNang_11.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.ChucNang_11.Size = new System.Drawing.Size(102, 31);
+            this.ChucNang_11.Size = new System.Drawing.Size(131, 37);
             this.ChucNang_11.TabIndex = 10;
             this.ChucNang_11.Text = "> Xem điểm";
             // 
@@ -177,7 +192,7 @@
             this.ChucNang_10.Location = new System.Drawing.Point(3, 281);
             this.ChucNang_10.Name = "ChucNang_10";
             this.ChucNang_10.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.ChucNang_10.Size = new System.Drawing.Size(115, 31);
+            this.ChucNang_10.Size = new System.Drawing.Size(150, 37);
             this.ChucNang_10.TabIndex = 9;
             this.ChucNang_10.Text = "> Xem lịch thi";
             // 
@@ -188,7 +203,7 @@
             this.ChucNang_9.Location = new System.Drawing.Point(3, 250);
             this.ChucNang_9.Name = "ChucNang_9";
             this.ChucNang_9.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.ChucNang_9.Size = new System.Drawing.Size(227, 31);
+            this.ChucNang_9.Size = new System.Drawing.Size(293, 37);
             this.ChucNang_9.TabIndex = 8;
             this.ChucNang_9.Text = "> Xem thời khoá biểu học kỳ";
             // 
@@ -199,7 +214,7 @@
             this.ChucNang_8.Location = new System.Drawing.Point(3, 219);
             this.ChucNang_8.Name = "ChucNang_8";
             this.ChucNang_8.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.ChucNang_8.Size = new System.Drawing.Size(207, 31);
+            this.ChucNang_8.Size = new System.Drawing.Size(270, 37);
             this.ChucNang_8.TabIndex = 7;
             this.ChucNang_8.Text = "> Xem thời khoá biểu tuần";
             // 
@@ -210,7 +225,7 @@
             this.ChucNang_7.Location = new System.Drawing.Point(3, 188);
             this.ChucNang_7.Name = "ChucNang_7";
             this.ChucNang_7.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.ChucNang_7.Size = new System.Drawing.Size(227, 31);
+            this.ChucNang_7.Size = new System.Drawing.Size(290, 37);
             this.ChucNang_7.TabIndex = 6;
             this.ChucNang_7.Text = "> Đăng ký môn nguyện vọng";
             // 
@@ -221,7 +236,7 @@
             this.ChucNang_6.Location = new System.Drawing.Point(3, 157);
             this.ChucNang_6.Name = "ChucNang_6";
             this.ChucNang_6.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.ChucNang_6.Size = new System.Drawing.Size(211, 31);
+            this.ChucNang_6.Size = new System.Drawing.Size(267, 37);
             this.ChucNang_6.TabIndex = 5;
             this.ChucNang_6.Text = "> Rút môn học đã đăng ký";
             // 
@@ -232,7 +247,7 @@
             this.ChucNang_5.Location = new System.Drawing.Point(3, 126);
             this.ChucNang_5.Name = "ChucNang_5";
             this.ChucNang_5.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.ChucNang_5.Size = new System.Drawing.Size(160, 31);
+            this.ChucNang_5.Size = new System.Drawing.Size(202, 37);
             this.ChucNang_5.TabIndex = 4;
             this.ChucNang_5.Text = "> Đăng ký môn học";
             // 
@@ -243,7 +258,7 @@
             this.ChucNang_RL.Location = new System.Drawing.Point(3, 95);
             this.ChucNang_RL.Name = "ChucNang_RL";
             this.ChucNang_RL.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.ChucNang_RL.Size = new System.Drawing.Size(223, 31);
+            this.ChucNang_RL.Size = new System.Drawing.Size(291, 37);
             this.ChucNang_RL.TabIndex = 3;
             this.ChucNang_RL.Text = "> Đánh giá kết quả rèn luyện";
             this.ChucNang_RL.Click += new System.EventHandler(this.ChucNang_RL_Click);
@@ -257,7 +272,7 @@
             this.ChucNang_3.Location = new System.Drawing.Point(3, 64);
             this.ChucNang_3.Name = "ChucNang_3";
             this.ChucNang_3.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.ChucNang_3.Size = new System.Drawing.Size(209, 31);
+            this.ChucNang_3.Size = new System.Drawing.Size(269, 37);
             this.ChucNang_3.TabIndex = 2;
             this.ChucNang_3.Text = "> Xem môn học tiên quyết";
             // 
@@ -268,7 +283,7 @@
             this.ChucNang_2.Location = new System.Drawing.Point(3, 33);
             this.ChucNang_2.Name = "ChucNang_2";
             this.ChucNang_2.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.ChucNang_2.Size = new System.Drawing.Size(223, 31);
+            this.ChucNang_2.Size = new System.Drawing.Size(284, 37);
             this.ChucNang_2.TabIndex = 1;
             this.ChucNang_2.Text = "> Xem chương trình đào tạo";
             // 
@@ -279,7 +294,7 @@
             this.ChucNang_1.Location = new System.Drawing.Point(3, 2);
             this.ChucNang_1.Name = "ChucNang_1";
             this.ChucNang_1.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.ChucNang_1.Size = new System.Drawing.Size(221, 31);
+            this.ChucNang_1.Size = new System.Drawing.Size(281, 37);
             this.ChucNang_1.TabIndex = 0;
             this.ChucNang_1.Text = "> Thông báo từ ban quản trị";
             // 
@@ -292,6 +307,7 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(343, 46);
             this.panel3.TabIndex = 8;
+            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
             // label3
             // 
@@ -301,26 +317,13 @@
             this.label3.Location = new System.Drawing.Point(28, 9);
             this.label3.Name = "label3";
             this.label3.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.label3.Size = new System.Drawing.Size(122, 33);
+            this.label3.Size = new System.Drawing.Size(159, 41);
             this.label3.TabIndex = 0;
             this.label3.Text = "TÍNH NĂNG";
             // 
-            // LB_ChangePWD
-            // 
-            this.LB_ChangePWD.AutoSize = true;
-            this.LB_ChangePWD.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LB_ChangePWD.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.LB_ChangePWD.Location = new System.Drawing.Point(216, 127);
-            this.LB_ChangePWD.Name = "LB_ChangePWD";
-            this.LB_ChangePWD.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
-            this.LB_ChangePWD.Size = new System.Drawing.Size(115, 26);
-            this.LB_ChangePWD.TabIndex = 9;
-            this.LB_ChangePWD.Text = "Đổi mật khẩu";
-            this.LB_ChangePWD.Click += new System.EventHandler(this.LB_ChangePWD_Click);
-            // 
             // mainSV
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 27F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1124, 647);
             this.Controls.Add(this.panel3);

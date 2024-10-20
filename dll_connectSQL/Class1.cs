@@ -4,12 +4,13 @@ using System.Text;
 using System.Data.SqlClient;
 using System.Data;
 using System.Windows.Forms;
+using System.Security.Cryptography.X509Certificates;
 
 namespace dll_connectSQL
 {
     public class DataBase_SQL
     {
-        public string cnstr = "Server=NEKOTRANG\\DATASQL;Database=TNUT2;User Id=sa;Password=123;";
+        public static string cnstr = "Server=DESKTOP-VICTOR1\\SQLEXPRESS;Database=DRL;User Id=sa;Password=1234;";
         public bool Login(string uid, string pwd)
         {
             try
@@ -20,20 +21,31 @@ namespace dll_connectSQL
                     conn.Open();
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
-                        cmd.Parameters.Add("uid", SqlDbType.VarChar, 50).Value = uid;
-                        cmd.Parameters.Add("pwd", SqlDbType.VarChar, 50).Value = pwd;
+                        cmd.Parameters.Add("uid", SqlDbType.VarChar, 20).Value = uid;
+                        cmd.Parameters.Add("pwd", SqlDbType.VarChar, 20).Value = pwd;
                         int result = (int)cmd.ExecuteScalar();
                         if (result > 0) return true;
                         else return false;
                     }
                 }
             }
-            catch
+            catch (Exception e)
             {
-                MessageBox.Show("Lỗi kết nối: ");
+                MessageBox.Show("Lỗi kết nối: " + e);
                 return false;
             }
         }
 
+        public static DataTable ExecuteQuery(string query)
+        {
+            DataTable dt = new DataTable();
+            using (SqlConnection connection = new SqlConnection(cnstr))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+            }
+
+            return dt;
+        }
     }
 }

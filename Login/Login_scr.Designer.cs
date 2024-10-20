@@ -1,6 +1,6 @@
 ﻿namespace Login
 {
-    partial class Login
+    partial class Login_scr
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login_scr));
             this.Logo = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.TB_uid = new System.Windows.Forms.TextBox();

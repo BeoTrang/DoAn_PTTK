@@ -57,7 +57,7 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(289, 10);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(325, 23);
+            this.label1.Size = new System.Drawing.Size(425, 31);
             this.label1.TabIndex = 1;
             this.label1.Text = "ĐÁNH GIÁ KẾT QUẢ RÈN LUYỆN";
             // 
@@ -67,7 +67,7 @@
             this.label2.ForeColor = System.Drawing.Color.DodgerBlue;
             this.label2.Location = new System.Drawing.Point(228, 81);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(111, 21);
+            this.label2.Size = new System.Drawing.Size(141, 27);
             this.label2.TabIndex = 1;
             this.label2.Text = "Chọn học kỳ:";
             // 
@@ -76,15 +76,17 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(12, 120);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.Size = new System.Drawing.Size(909, 431);
             this.dataGridView1.TabIndex = 2;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // comboBox_HK
             // 
             this.comboBox_HK.FormattingEnabled = true;
             this.comboBox_HK.Location = new System.Drawing.Point(345, 78);
             this.comboBox_HK.Name = "comboBox_HK";
-            this.comboBox_HK.Size = new System.Drawing.Size(267, 29);
+            this.comboBox_HK.Size = new System.Drawing.Size(267, 35);
             this.comboBox_HK.TabIndex = 3;
             // 
             // label3
@@ -93,7 +95,7 @@
             this.label3.Location = new System.Drawing.Point(8, 566);
             this.label3.Name = "label3";
             this.label3.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.label3.Size = new System.Drawing.Size(248, 31);
+            this.label3.Size = new System.Drawing.Size(317, 37);
             this.label3.TabIndex = 4;
             this.label3.Text = "- Điểm rèn luyện được công bố:";
             // 
@@ -103,7 +105,7 @@
             this.label4.Location = new System.Drawing.Point(8, 597);
             this.label4.Name = "label4";
             this.label4.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.label4.Size = new System.Drawing.Size(275, 31);
+            this.label4.Size = new System.Drawing.Size(352, 37);
             this.label4.TabIndex = 5;
             this.label4.Text = "- Xếp loại rèn luyện được công bố: ";
             // 
@@ -113,7 +115,7 @@
             this.label5.Location = new System.Drawing.Point(8, 628);
             this.label5.Name = "label5";
             this.label5.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.label5.Size = new System.Drawing.Size(530, 31);
+            this.label5.Size = new System.Drawing.Size(682, 37);
             this.label5.TabIndex = 6;
             this.label5.Text = "- Điểm này là căn cứ để xét cấp học bổng, khen thưởng của sinh viên.";
             // 
@@ -127,10 +129,11 @@
             this.BT_Save.TabIndex = 7;
             this.BT_Save.Text = "Lưu thay đổi";
             this.BT_Save.UseVisualStyleBackColor = false;
+            this.BT_Save.Click += new System.EventHandler(this.BT_Save_Click);
             // 
             // RenLuyen_SV
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 27F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(937, 671);
             this.Controls.Add(this.BT_Save);

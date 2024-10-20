@@ -61,11 +61,11 @@
     <Compile Include="Form_Captcha.Designer.cs">
       <DependentUpon>Form_Captcha.cs</DependentUpon>
     </Compile>
-    <Compile Include="Login.cs">
+    <Compile Include="Login_scr.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Login.Designer.cs">
-      <DependentUpon>Login.cs</DependentUpon>
+    <Compile Include="Login_scr.Designer.cs">
+      <DependentUpon>Login_scr.cs</DependentUpon>
     </Compile>
     <Compile Include="mainSV.cs">
       <SubType>Form</SubType>
@@ -87,8 +87,8 @@
     <EmbeddedResource Include="Form_Captcha.resx">
       <DependentUpon>Form_Captcha.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Login.resx">
-      <DependentUpon>Login.cs</DependentUpon>
+    <EmbeddedResource Include="Login_scr.resx">
+      <DependentUpon>Login_scr.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="mainSV.resx">
       <DependentUpon>mainSV.cs</DependentUpon>
