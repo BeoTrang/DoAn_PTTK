@@ -32,12 +32,23 @@ namespace Login
             }
             string uid = TB_uid.Text;
             string pwd = TB_pwd.Text;
-
+            if (dem_login>=3)
+            {
+                Form_Captcha captcha = new Form_Captcha();
+                captcha.FormClosing += new FormClosingEventHandler(Captcha_FormClosing);
+                captcha.ShowDialog();
+                if (stop == true)
+                {
+                    MessageBox.Show("Bạn không điền Captcha nên không thể đăng nhập!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+            }    
             DataBase_SQL db = new DataBase_SQL();
             bool DangNhap = db.Login(uid, pwd);
             if(DangNhap == true)
             {
                 MessageBox.Show("Đăng nhập thành công!");
+                dem_login = 0;
                 mainSV mainSV = new mainSV();
                 this.Hide();
                 mainSV.ShowDialog();
@@ -49,14 +60,7 @@ namespace Login
                 dem_login++; 
                 return;
             }
-            //Form_Captcha captcha = new Form_Captcha();
-            //captcha.FormClosing += new FormClosingEventHandler(Captcha_FormClosing);
-            //captcha.ShowDialog();
-            //if (stop == true)
-            //{
-            //    MessageBox.Show("Bạn không điền Captcha nên không thể đăng nhập!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //    return;
-            //} 
+            
         }
         private void Captcha_FormClosing(object sender, FormClosingEventArgs e)
         {
