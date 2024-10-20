@@ -3,37 +3,36 @@ using System.Collections.Generic;
 using System.Text;
 using System.Data.SqlClient;
 using System.Data;
+using System.Windows.Forms;
 
 namespace dll_connectSQL
 {
-    public class db_sqlserver
+    public class DataBase_SQL
     {
-        public string cnstr;
-        public string login(string uid, string pwd)
+        public string cnstr = "Server=NEKOTRANG\\DATASQL;Database=TNUT2;User Id=sa;Password=123;";
+        public bool Login(string uid, string pwd)
         {
-            string json = "";
             try
             {
                 using (SqlConnection conn = new SqlConnection(cnstr))
                 {
+                    string query = "SELECT COUNT(*) FROM TaiKhoan WHERE UID = @uid AND PWD = @pwd";
                     conn.Open();
-                    using (SqlCommand cmd = conn.CreateCommand())
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.CommandText = "SP_API";
                         cmd.Parameters.Add("uid", SqlDbType.VarChar, 50).Value = uid;
                         cmd.Parameters.Add("pwd", SqlDbType.VarChar, 50).Value = pwd;
-                        cmd.Parameters.Add("@action", SqlDbType.VarChar, 50).Value = "login";
-                        object result = cmd.ExecuteScalar();
-                        json = (string)result;
+                        int result = (int)cmd.ExecuteScalar();
+                        if (result > 0) return true;
+                        else return false;
                     }
                 }
             }
             catch
             {
-                json = "{\"ok\":0,\"msg\":\"Không kết nối được\"}";
+                MessageBox.Show("Lỗi kết nối: ");
+                return false;
             }
-            return json;
         }
 
     }
