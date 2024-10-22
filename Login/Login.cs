@@ -30,9 +30,10 @@ namespace Login
                 MessageBox.Show("Điền đầy đủ thông tin.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
+            string LoaiTK = "";
             string uid = TB_uid.Text;
             string pwd = TB_pwd.Text;
-            if (dem_login>=3)
+            if (dem_login >= 3)
             {
                 Form_Captcha captcha = new Form_Captcha();
                 captcha.FormClosing += new FormClosingEventHandler(Captcha_FormClosing);
@@ -42,25 +43,39 @@ namespace Login
                     MessageBox.Show("Bạn không điền Captcha nên không thể đăng nhập!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
-            }    
+            }
             DataBase_SQL db = new DataBase_SQL();
-            bool DangNhap = db.Login(uid, pwd);
-            if(DangNhap == true)
+            string DangNhap = db.Login(uid, pwd);
+            if (DangNhap != null)
             {
+                LoaiTK = DangNhap;
                 MessageBox.Show("Đăng nhập thành công!");
                 dem_login = 0;
-                mainSV mainSV = new mainSV();
-                this.Hide();
-                mainSV.ShowDialog();
-                this.Show();
+                if (LoaiTK == "SV")
+                {
+                    mainSV mainSV = new mainSV();
+                    mainSV.MSV = uid;
+                    this.Hide();
+                    mainSV.ShowDialog();
+                    this.Show();
+                }
+                else if (LoaiTK == "GV")
+                {
+                    MessageBox.Show("Main GV!");
+                }
+                else if (LoaiTK == "KHOA")
+                {
+                    MessageBox.Show("Main KHOA!");
+                }
             }
             else
             {
                 MessageBox.Show("Đăng nhập không thành công!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                dem_login++; 
+                dem_login++;
+                TB_pwd.Text = "";
                 return;
             }
-            
+
         }
         private void Captcha_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -70,30 +85,6 @@ namespace Login
                 stop = true;
             }
         }
-
-        //private void Login_Load(object sender, EventArgs e)
-        //{
-        //    TB_pwd.PasswordChar = '*';
-        //    string action = this.Request["action"];
-        //    switch (action)
-        //    {
-        //        case "login":
-        //            login();
-        //            break;
-        //        case "captcha":
-        //            Tao_Anh_Captcha();
-        //            break;
-        //        default:
-        //            this.Response.Write("{\"ok\": 0, \"msg\": \"Hành động không hợp lệ.\"}");
-        //            break;
-        //    }
-        //}
-        //dll_connectSQL.db_sqlserver get_db()
-        //{
-        //    dll_connectSQL.db_sqlserver db = new dll_connectSQL.db_sqlserver();
-        //    db.cnstr = "Server=NEKOTRANG\\DATASQL;Database=Login_Data;User Id=sa;Password=123;";
-        //    return db;
-        //}
 
         private void Login_Load(object sender, EventArgs e)
         {

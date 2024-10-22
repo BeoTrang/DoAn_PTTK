@@ -3,10 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
-using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -15,41 +13,19 @@ namespace Login
 {
     public partial class mainSV : Form
     {
-        public string uid_in;
-        public string hoten_in;
+        public string MSV { get; set; }
+        public string HVT_SV { get; set; }
+        public string MaLop { get; set; }
+        public string TenLop { get; set; }
+        public string MaKhoa { get; set; }
+        public string TenKhoa { get; set; }
+        public string MGV { get; set; }
+        public string HVT_GV { get; set; }
+
         public mainSV()
         {
             InitializeComponent();
-            uid_in = Login_scr.uid;
-            LB_MSV.Text = uid_in;
-            using (SqlConnection conn = new SqlConnection(DataBase_SQL.cnstr))
-            {
-                string query = "SELECT Hoten FROM ThongTin_SV WHERE MSV = @uid";
-                conn.Open();
-
-                using (SqlCommand cmd = new SqlCommand(query, conn))
-                {
-                    // Gán tham số cho câu lệnh SQL
-                    cmd.Parameters.Add("uid", SqlDbType.VarChar, 20).Value = uid_in;
-
-                    // Sử dụng ExecuteReader để thực thi câu lệnh và lấy dữ liệu
-                    using (SqlDataReader reader = cmd.ExecuteReader())
-                    {
-                        if (reader.Read()) // Kiểm tra nếu có bản ghi nào được trả về
-                        {
-                            string hoten_in = reader["Hoten"].ToString();
-                            LB_HVT.Text = hoten_in; // Gán giá trị cho label
-                        }
-                        else
-                        {
-                            Console.WriteLine("Không tìm thấy người dùng.");
-                        }
-                    }
-                }
-            }
-
         }
-    
 
         private void ChucNang_RL_Click(object sender, EventArgs e)
         {
@@ -75,22 +51,24 @@ namespace Login
         private void LB_ChangePWD_Click(object sender, EventArgs e)
         {
             ChangPWD changPWD = new ChangPWD();
+            changPWD.uid = MSV;
             changPWD.ShowDialog();
         }
 
-        private void panel3_Paint(object sender, PaintEventArgs e)
+        private void mainSV_Load(object sender, EventArgs e)
         {
-
-        }
-
-        private void LB_MSV_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void LB_HVT_Click(object sender, EventArgs e)
-        {
-
+            LB_uid.Text = MSV;
+            DataBase_SQL dataBase_SQL = new DataBase_SQL();
+            var (HVT_SV, MaLop, TenLop, MaKhoa, TenKhoa, MGV, HVT_GV) = dataBase_SQL.GetSV(MSV);
+            LB_HVT.Text = HVT_SV;
+            LB_HVT_SV.Text = HVT_SV;
+            LB_MSV.Text = MSV;
+            LB_MaLop.Text = MaLop;
+            LB_TenLop.Text = TenLop;
+            LB_MaKhoa.Text = MaKhoa;
+            LB_TenKhoa.Text = TenKhoa;
+            LB_MGV.Text = MGV;
+            LB_HVT_GV.Text = HVT_GV;
         }
     }
 }

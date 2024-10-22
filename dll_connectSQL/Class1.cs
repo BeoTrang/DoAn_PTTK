@@ -4,14 +4,101 @@ using System.Text;
 using System.Data.SqlClient;
 using System.Data;
 using System.Windows.Forms;
-using System.Security.Cryptography.X509Certificates;
 
 namespace dll_connectSQL
 {
     public class DataBase_SQL
     {
-        public static string cnstr = "Server=DESKTOP-VICTOR1\\SQLEXPRESS;Database=DRL;User Id=sa;Password=1234;";
-        public bool Login(string uid, string pwd)
+        public string cnstr = "Server=DESKTOP-VICTOR1\\SQLEXPRESS;Database=DRL;User Id=sa;Password=1234;";
+        public string Login(string uid, string pwd)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(cnstr))
+                {
+                    string query = @"
+                    SELECT LoaiTK 
+                    FROM TaiKhoan 
+                    WHERE uid = @uid AND pwd = @pwd";
+                    conn.Open();
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@uid", uid);
+                        cmd.Parameters.AddWithValue("@pwd", pwd);
+                        var result = cmd.ExecuteScalar();
+                        if (result != null) return result.ToString();
+                        else return null;
+                    }
+                }
+            }
+            catch
+            {
+                return null;
+            }
+        }
+        public (string, string, string, string, string, string, string) GetSV(string MSV_input)
+        {
+            string HVT_SV = "";
+            string MaLop = "";
+            string TenLop = "";
+            string MaKhoa = "";
+            string TenKhoa = "";
+            string MGV = "";
+            string HVT_GV = "";
+            using (SqlConnection connection = new SqlConnection(cnstr))
+            {
+                connection.Open();
+                string query = "SELECT HoTen, MaLop FROM ThongTin_SV WHERE MSV = @MSV";
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@MSV", MSV_input);
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    HVT_SV = reader["HoTen"].ToString();
+                    MaLop = reader["MaLop"].ToString();
+                }
+            }
+            using (SqlConnection connection = new SqlConnection(cnstr))
+            {
+                connection.Open();
+                string query = @"
+                SELECT Lop.TenLop, Lop.MaKhoa, Khoa.TenKhoa
+                FROM Lop
+                INNER JOIN Khoa ON Lop.MaKhoa = Khoa.MaKhoa
+                WHERE Lop.MaLop = @MaLop";
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@MaLop", MaLop);
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    TenLop = reader["TenLop"].ToString();
+                    MaKhoa = reader["MaKhoa"].ToString();
+                    TenKhoa = reader["TenKhoa"].ToString();
+                }
+            }
+            using (SqlConnection connection = new SqlConnection(cnstr))
+            {
+                connection.Open();
+                string query = @"
+                SELECT MGV, HoTen
+                FROM ThongTin_GV
+                WHERE MaLop = @MaLop";
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@MaLop", MaLop);
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.Read())
+                {
+                    MGV = reader["MGV"].ToString();
+                    HVT_GV = reader["HoTen"].ToString();
+                }
+            }
+            return (HVT_SV, MaLop, TenLop, MaKhoa, TenKhoa, MGV, HVT_GV);
+        }
+        public bool CheckPWD(string uid, string pwd)
         {
             try
             {
@@ -21,31 +108,41 @@ namespace dll_connectSQL
                     conn.Open();
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
-                        cmd.Parameters.Add("uid", SqlDbType.VarChar, 20).Value = uid;
-                        cmd.Parameters.Add("pwd", SqlDbType.VarChar, 20).Value = pwd;
+                        cmd.Parameters.Add("uid", SqlDbType.VarChar, 50).Value = uid;
+                        cmd.Parameters.Add("pwd", SqlDbType.VarChar, 50).Value = pwd;
                         int result = (int)cmd.ExecuteScalar();
                         if (result > 0) return true;
                         else return false;
                     }
                 }
             }
-            catch (Exception e)
+            catch
             {
-                MessageBox.Show("Lỗi kết nối: " + e);
                 return false;
             }
         }
-
-        public static DataTable ExecuteQuery(string query)
+        public bool updatePWD(string uid, string pwd)
         {
-            DataTable dt = new DataTable();
-            using (SqlConnection connection = new SqlConnection(cnstr))
+            using (SqlConnection conn = new SqlConnection(cnstr))
             {
-                SqlCommand command = new SqlCommand(query, connection);
-                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                string query = @"
+                UPDATE TaiKhoan
+                SET pwd = @NewPassword
+                WHERE uid = @uid";
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@NewPassword", pwd);
+                    cmd.Parameters.AddWithValue("@uid", uid);
+                    int result = cmd.ExecuteNonQuery();
+                    if (result > 0) return true;
+                    else return false;
+                }
             }
-
-            return dt;
         }
+        //public string getGV(string uid)
+        //{
+
+        //}
     }
 }
